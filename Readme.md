@@ -1,8 +1,11 @@
-=PI Webcam tools
+# PI Webcam tools
 Quick hack to capture webcam images on a pi 2 connect to a USB logitech camera and copy it the webserver
 
-==Install
+Not sure where the usbreset.c came from. It isn't mine, and it doesn't look to match any I can find in github.
+
+## Install
 on pi
+```
 mkdir /home/pi/bin
 mkdir /home/pi/src
 #copy usbreset.c to src
@@ -13,3 +16,4 @@ ssh-keygen -t rsa
 #copy id_rsa.pub to webcam@admin2:.ssh/authorized_keys
 #Copy crontab file into pi's crontab
 crontab -e
+```
