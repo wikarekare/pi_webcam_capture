@@ -1,0 +1,11 @@
+#!/bin/sh
+HOME=/home/pi
+WEBSERVER=192.168.249.102
+#
+DEVNUMS=`/usr/bin/lsusb | /bin/grep -i Logitech | /usr/bin/cut -d ' ' -f2,4 | /usr/bin/tr ":" " "`
+$HOME/bin/usbreset $DEVNUMS
+/bin/sleep 3
+#
+/usr/bin/fswebcam -d /dev/video0 -r 1024x576 --no-shadow --jpeg 99 --set Sharpness=300 --set 'LED1 Mode'=Off --set 'Focus (absolute)Focus (absolute)'=0 --set Sharpness=160 --set Contrast=32 --set Brightness=153  --rotate 180 $HOME/webcam/image.jpg
+#
+/usr/bin/scp $HOME/webcam/image.jpg webcam@${WEBSERVER}:webcam/
